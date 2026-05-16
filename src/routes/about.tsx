@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Globe2 } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
+import hallImg from "@/assets/assembly-hall.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -57,21 +58,27 @@ function AboutPage() {
         </section>
 
         <section className="bg-secondary/40 border-y border-border">
-          <div className="mx-auto max-w-5xl px-6 py-24">
-            <div className="flex items-start gap-6">
-              <div className="shrink-0 h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+          <div className="mx-auto max-w-6xl px-6 py-24 grid md:grid-cols-[1.1fr_1fr] gap-12 items-center">
+            <div className="relative overflow-hidden rounded-3xl shadow-[var(--shadow-elegant)] aspect-[4/3]">
+              <img src={hallImg} alt="" className="absolute inset-0 h-full w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary-deep/40 to-transparent" />
+            </div>
+            <div>
+              <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
                 <Globe2 className="h-7 w-7" />
               </div>
-              <div>
-                <h2 className="font-display text-3xl font-semibold text-foreground">Our parent organization</h2>
-                <p className="mt-4 text-muted-foreground leading-relaxed max-w-3xl">
-                  <span className="font-semibold text-foreground">UNA-USA</span> is a nonprofit
-                  grassroots organization dedicated to educating, inspiring, and mobilizing
-                  Americans to support the principles and work of the United Nations. The
-                  Hammond Chapter is part of that national network — bringing UNA-USA's mission
-                  into our school.
-                </p>
-              </div>
+              <h2 className="mt-6 font-display text-3xl md:text-4xl font-semibold text-foreground">Our parent organization</h2>
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                <span className="font-semibold text-foreground">UNA-USA</span> is a nonprofit
+                grassroots organization dedicated to educating, inspiring, and mobilizing
+                Americans to support the principles and work of the United Nations. The
+                Hammond Chapter is part of that national network — bringing UNA-USA's mission
+                into our school.
+              </p>
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                From our classroom to the largest stages of global conversation, we're part of
+                something much bigger than ourselves.
+              </p>
             </div>
           </div>
         </section>
