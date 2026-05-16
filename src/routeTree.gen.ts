@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as LeadershipRouteImport } from './routes/leadership'
+import { Route as JoinRouteImport } from './routes/join'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
 const LeadershipRoute = LeadershipRouteImport.update({
   id: '/leadership',
   path: '/leadership',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JoinRoute = JoinRouteImport.update({
+  id: '/join',
+  path: '/join',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -32,30 +38,34 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/join': typeof JoinRoute
   '/leadership': typeof LeadershipRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/join': typeof JoinRoute
   '/leadership': typeof LeadershipRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/join': typeof JoinRoute
   '/leadership': typeof LeadershipRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/leadership'
+  fullPaths: '/' | '/about' | '/join' | '/leadership'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/leadership'
-  id: '__root__' | '/' | '/about' | '/leadership'
+  to: '/' | '/about' | '/join' | '/leadership'
+  id: '__root__' | '/' | '/about' | '/join' | '/leadership'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  JoinRoute: typeof JoinRoute
   LeadershipRoute: typeof LeadershipRoute
 }
 
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/leadership'
       fullPath: '/leadership'
       preLoaderRoute: typeof LeadershipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/join': {
+      id: '/join'
+      path: '/join'
+      fullPath: '/join'
+      preLoaderRoute: typeof JoinRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  JoinRoute: JoinRoute,
   LeadershipRoute: LeadershipRoute,
 }
 export const routeTree = rootRouteImport
