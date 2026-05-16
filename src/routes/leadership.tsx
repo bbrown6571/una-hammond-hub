@@ -48,28 +48,50 @@ function LeadershipPage() {
 
         <section className="mx-auto max-w-6xl px-6 py-24">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {board.map((p, i) => (
-              <div
-                key={p.name}
-                className={`group rounded-3xl border border-border bg-card p-8 hover:border-primary hover:shadow-[var(--shadow-card)] transition-all ${
-                  i === 0 ? "lg:col-span-3 lg:flex lg:items-center lg:gap-10 lg:p-12 bg-gradient-to-br from-primary to-primary-deep border-transparent text-primary-foreground hover:border-transparent" : ""
-                }`}
-              >
+            {board.map((p, i) => {
+              if (i === 0) {
+                return (
+                  <div
+                    key={p.name}
+                    className="lg:col-span-3 overflow-hidden rounded-3xl bg-gradient-to-br from-primary to-primary-deep text-primary-foreground grid md:grid-cols-[1fr_1.1fr]"
+                  >
+                    <div className="relative aspect-[4/5] md:aspect-auto md:min-h-[420px] overflow-hidden">
+                      <img
+                        src={presidentImg}
+                        alt={`${p.name}, ${p.role}`}
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                    </div>
+                    <div className="p-10 md:p-14 flex flex-col justify-center">
+                      <div className="text-xs uppercase tracking-[0.25em] text-white/70">{p.role}</div>
+                      <div className="mt-3 font-display text-4xl md:text-5xl font-semibold leading-tight">
+                        {p.name}
+                      </div>
+                      <p className="mt-5 text-white/85 max-w-md">
+                        Leading the chapter this year — setting the agenda, championing our service
+                        projects, and making sure every member has a voice.
+                      </p>
+                    </div>
+                  </div>
+                );
+              }
+              return (
                 <div
-                  className={`h-20 w-20 rounded-2xl flex items-center justify-center font-display text-2xl font-semibold ${
-                    i === 0 ? "bg-white/15 text-white lg:h-28 lg:w-28 lg:text-4xl" : "bg-accent text-primary"
-                  }`}
+                  key={p.name}
+                  className="group rounded-3xl border border-border bg-card p-8 hover:border-primary hover:shadow-[var(--shadow-card)] transition-all"
                 >
-                  {initials(p.name)}
-                </div>
-                <div className={i === 0 ? "mt-6 lg:mt-0" : "mt-6"}>
-                  <div className={`text-xs uppercase tracking-[0.2em] ${i === 0 ? "text-white/70" : "text-primary"}`}>{p.role}</div>
-                  <div className={`mt-2 font-display font-semibold ${i === 0 ? "text-3xl lg:text-4xl" : "text-xl text-foreground"}`}>
-                    {p.name}
+                  <div className="h-20 w-20 rounded-2xl bg-accent text-primary flex items-center justify-center font-display text-2xl font-semibold">
+                    {initials(p.name)}
+                  </div>
+                  <div className="mt-6">
+                    <div className="text-xs uppercase tracking-[0.2em] text-primary">{p.role}</div>
+                    <div className="mt-2 font-display text-xl font-semibold text-foreground">
+                      {p.name}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className="mt-16 rounded-3xl border border-border p-8 md:p-10 bg-secondary/40">
