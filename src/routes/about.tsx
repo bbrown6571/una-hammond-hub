@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Globe2 } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
+import hallImg from "@/assets/assembly-hall.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
