@@ -186,11 +186,11 @@ function Index() {
               </div>
               <div className="flex flex-col gap-3">
                 <a href="https://instagram.com/una_hahs" target="_blank" rel="noreferrer" className="inline-flex items-center justify-between gap-3 rounded-full bg-white/10 backdrop-blur border border-white/20 px-6 py-3.5 hover:bg-white/20 transition-colors">
-                  <span className="inline-flex items-center gap-2"><Instagram className="h-4 w-4" /> @una_hahs</span>
+                  <span className="inline-flex items-center gap-2"><Instagram className="h-4 w-4" />@una_hahs</span>
                   <ArrowRight className="h-4 w-4" />
                 </a>
                 <a href="mailto:hahsunausa@gmail.com" className="inline-flex items-center justify-between gap-3 rounded-full bg-white px-6 py-3.5 text-primary-deep hover:bg-white/95 transition-colors">
-                  <span className="inline-flex items-center gap-2"><Mail className="h-4 w-4" /> hahsunausa@gmail.com</span>
+                  <span className="inline-flex items-center gap-2"><Mail className="h-4 w-4" />hahsunausa@gmail.com</span>
                   <ArrowRight className="h-4 w-4" />
                 </a>
               </div>
